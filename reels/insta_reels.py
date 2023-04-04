@@ -1,6 +1,10 @@
+import time
+
 import reels.constants as const
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver.common.keys import Keys
 
 
 class Insta(webdriver.Edge):
@@ -46,6 +50,17 @@ class Insta(webdriver.Edge):
 
     def reels_btn(self):
         self.find_element(By.XPATH, '//a[@href="/reels/"]').click()
+
+    def audio_btn(self):
+        self.find_element(By.XPATH, "(//*[name()='svg'][@aria-label='Audio is muted'])[1]").click()
+
+    def periodic_scroll(self):
+        for _ in range(10):
+            time.sleep(30)
+            ActionChains(self).send_keys(Keys.ARROW_DOWN).perform()
+
+    def share_btn(self):
+        self.find_element(By.XPATH, "(//*[name()='svg'][@aria-label='Direct'])[1]").click()
 
     def logout_btn(self):
         self.find_element(By.XPATH, '//div[text()="More"]').click()

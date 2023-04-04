@@ -16,7 +16,10 @@ with Insta() as bot:
     bot.enable_notification()
     # bot.homepage()
     bot.reels_btn()
-    time.sleep(60)
+    bot.audio_btn()
+    bot.periodic_scroll()
+    # bot.share_btn()
+    # time.sleep(60)
     bot.logout_btn()
 
     time.sleep(5)
